@@ -27,6 +27,13 @@ export const copyFile = async (source = []) => {
                 const newTargetPath = path.resolve(target, item.name);
                 if (item.isDirectory()) {
                     isExist(newTargetPath);
+                    // 遍历子目录所有文件
+                    const sourceDirFile = await fs.readdirSync(newSourcePath, { withFileTypes: true });
+                    const sourceDirFileRes: any = [];
+                    sourceDirFile.map(i => {
+                        sourceDirFileRes.push({ src: newSourcePath, name: i.name, target: newTargetPath });
+                    })
+                    await copyFile(sourceDirFileRes);
                 }
                 await fs.copyFileSync(newSourcePath, newTargetPath);
             })

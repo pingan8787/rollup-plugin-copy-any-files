@@ -6,4 +6,6 @@ const targets = {
     ]
 }
 
-rollupPluginCopyFiles(targets);
+const plugin = rollupPluginCopyFiles(targets);
+
+plugin.closeBundle();
