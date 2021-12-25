@@ -3,7 +3,7 @@ import rollup from 'rollup';
 import rollupTypescript from '@rollup/plugin-typescript';
 
 /**
- * 使用 esbuild 打包文件
+ * 使用 rollup 打包文件
  * 数据格式：
  * {src: './src/script/background.ts', target: './dist/', name: 'background.js'},
  * @param {Object} source 源文件
