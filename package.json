@@ -6,19 +6,8 @@
   "directories": {
     "test": "test"
   },
-  "watch": {
-    "build": {
-      "patterns": [
-        "src"
-      ],
-      "extensions": "ts",
-      "runOnChangeOnly": false
-    }
-  },
   "scripts": {
-    "dev": "npm-watch",
-    "build": "rollup --config rollup.config.ts",
-    "test": "ts-node  ./test/test1.ts"
+    "build": "tsc -p ."
   },
   "repository": {
     "type": "git",

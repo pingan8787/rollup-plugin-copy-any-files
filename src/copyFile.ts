@@ -2,13 +2,13 @@ import fs from 'fs';
 import path from 'path';
 import { isExist } from './utils';
 
-/**
- * 复制文件操作
- * @param {String} source.src 源文件路径
- * @param {String} source.target 保存的目标路径
- * @param {String} source.name 保存的文件名
- */
-export const copyFile = async (source = []) => {
+export interface CopyOptions {
+    src: string, // 源文件路径
+    target: string, // 保存的目标路径
+    name?: string // 保存的文件名
+}
+
+export const copyFileHandle = async (source: CopyOptions[] = []): Promise<any> => {
     source.forEach(async file => {
         const { src, name, target = './dist/' } = file;
         const fileStat = await fs.statSync(src);
@@ -17,7 +17,8 @@ export const copyFile = async (source = []) => {
         await isExist(target);
         if (isFile) {
             // 如果是文件，直接执行拷贝操作
-            await fs.copyFileSync(src, target + name);
+            fs.copyFile(src, target + name, () => {});
+            // await fs.copyFileSync(src, target + name);
         } else if (isDir) {
             // 如果是文件夹，直接执行拷贝操作
             const sourceFile = await fs.readdirSync(src, { withFileTypes: true });
@@ -33,9 +34,10 @@ export const copyFile = async (source = []) => {
                     sourceDirFile.map(i => {
                         sourceDirFileRes.push({ src: newSourcePath, name: i.name, target: newTargetPath });
                     })
-                    await copyFile(sourceDirFileRes);
+                    await copyFileHandle(sourceDirFileRes);
                 }
-                await fs.copyFileSync(newSourcePath, newTargetPath);
+                fs.copyFile(newSourcePath, newTargetPath, () => {});
+                // await fs.copyFileSync(newSourcePath, newTargetPath);
             })
         }
     })
