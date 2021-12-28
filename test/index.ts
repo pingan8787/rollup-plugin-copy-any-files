@@ -1,1 +1,1 @@
-const test = 'leo';
+const test = 'rollupPluginCopyAnyFiles';

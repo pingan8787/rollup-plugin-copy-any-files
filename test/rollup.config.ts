@@ -1,5 +1,5 @@
 const rollupTypescript = require('@rollup/plugin-typescript');
-const rollupPluginCopyFiles = require('../dist/index');
+const rollupPluginCopyAnyFiles = require('../dist/index');
 
 const targets = {
     copy: [
@@ -14,5 +14,5 @@ export default {
     format: 'cjs',
     name: 'index'
   },
-  plugins: [rollupTypescript(), rollupPluginCopyFiles(targets)]
+  plugins: [rollupTypescript(), rollupPluginCopyAnyFiles(targets)]
 }

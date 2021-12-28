@@ -26,9 +26,9 @@ export interface Options {
  * TODO：增加构建处理
  * @returns 
  */
-export default function rollupPluginCopeFiles(params: Options): Plugin {
+export default function rollupPluginCopeAnyFiles(params: Options): Plugin {
     return {
-        name: 'rollup-plugin-copy-files',
+        name: 'rollup-plugin-copy-any-files',
         // 所有钩子，查看文档  https://rollupjs.org/guide/en/#output-generation-hooks
         closeBundle() {
             const { copy = [] } = params
@@ -39,4 +39,4 @@ export default function rollupPluginCopeFiles(params: Options): Plugin {
     }
 }
 
-module.exports = rollupPluginCopeFiles;
+module.exports = rollupPluginCopeAnyFiles;

@@ -16,7 +16,7 @@ pnpm add rollup-plugin-copy-files -D
 
 ```js
 // rollup.config.js
-const rollupPluginCopyFiles = require('../dist/index');
+const rollupPluginCopyAnyFiles = require('../dist/index');
 
 const targets = {
     copy: [
@@ -31,7 +31,7 @@ export default {
     format: 'cjs',
     name: 'index'
   },
-  plugins: [rollupPluginCopyFiles(targets)]
+  plugins: [rollupPluginCopyAnyFiles(targets)]
 }
 ```
 

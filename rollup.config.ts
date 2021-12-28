@@ -5,7 +5,7 @@ export default {
   output: {
     file: 'dist/index.js',
     format: 'cjs',
-    name: 'rollupPluginCopyFiles'
+    name: 'rollupPluginCopyAnyFiles'
   },
   plugins: [rollupTypescript()]
 }
