@@ -8,7 +8,7 @@ The timing point for plug-in execution is [Rollup closeBundle Hooks](https://rol
 
 ```bash
 npm install rollup-plugin-copy-files -D
-or
+# Or pnpm
 pnpm add rollup-plugin-copy-files -D
 ```
 
@@ -16,14 +16,16 @@ pnpm add rollup-plugin-copy-files -D
 
 ```js
 // rollup.config.js
-const rollupPluginCopyAnyFiles = require('../dist/index');
+const rollupPluginCopyAnyFiles = require('rollup-plugin-copy-any-files');
 
+// Define targets
 const targets = {
     copy: [
         { src: './source/', target: './target/' },
     ]
 }
 
+// Use plugin
 export default {
   input: './index.ts',
   output: {
