@@ -30,7 +30,7 @@ export default function rollupPluginCopeAnyFiles(params: Options): Plugin {
     return {
         name: 'rollup-plugin-copy-any-files',
         // 所有钩子，查看文档  https://rollupjs.org/guide/en/#output-generation-hooks
-        closeBundle() {
+        buildEnd() {
             const { copy = [] } = params
             if (copy.length > 0) {
                 copyFileHandle(copy);
